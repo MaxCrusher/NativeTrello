@@ -3,7 +3,7 @@ import { Text, StyleSheet, View } from 'react-native';
 
 class ButtonMain extends Component {
   render = () => (
-    <View style={styles.button} onT>
+    <View style={styles.button} onTouchStart={() => this.props.navigation.navigate('ToDo')}>
       <Text style={styles.text}>{this.props.text}</Text>
     </View>
   );

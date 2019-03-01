@@ -8,7 +8,7 @@ const nameBut = [{ id: 1, name: 'To do' }, { id: 2, name: 'In progress' }, { id:
 class Main extends Component {
   render = () => {
     const buttous = nameBut.map(elem => (
-      <ButtonMain key={elem.id + elem.name} style={styles.button} text={elem.name} />
+      <ButtonMain key={elem.id + elem.name} style={styles.button} text={elem.name} {...this.props} />
     ));
     console.log('+');
     return (
