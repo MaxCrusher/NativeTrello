@@ -55,7 +55,7 @@ class PageTasks extends Component {
     }
     return (
       <View style={{ flex: 1, alignItems: 'center', width: '100%' }}>
-        <HeaderMain text="To do" />
+        <HeaderMain navigation={this.props.navigation} text="To do" />
         <MenuNavs />
         <AddPrayer addTask={this.addTask} />
         <FlatList

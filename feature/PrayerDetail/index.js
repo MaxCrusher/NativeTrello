@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { TextInput, Text, View, StyleSheet, Image, ActivityIndicator } from 'react-native';
+import { TextInput, Text, View, StyleSheet, Image, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import { toUnicode } from 'punycode';
 import IconState from '../../common/IconState';
 import PrayerInfo from './PrayerInfo';
 import Members from './Members';
@@ -33,7 +34,9 @@ class PrayerDetail extends Component {
       <View>
         <View style={styles.header}>
           <View style={styles.icons}>
-            <Image source={require('./img/back.png')} />
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+              <Image source={require('./img/back.png')} />
+            </TouchableOpacity>
             <Image source={require('./img/prayerWhite.png')} />
           </View>
           <TextInput

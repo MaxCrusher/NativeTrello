@@ -49,7 +49,6 @@ export const addTaskA = (autorId, idType, text) => dispatch => {
   return failRequest
     .addTasks(autorId, idType, text)
     .then(response => {
-      console.log(response);
       dispatch(resolveAddTask(response));
       return response;
     })
