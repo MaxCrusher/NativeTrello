@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
-import { View, Image, TextInput, StyleSheet, Text } from 'react-native';
+import { View, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 
 class AddPrayer extends Component {
+  state = {
+    text: '',
+  };
+
   render = () => (
     <View style={styles.container}>
-      <Image style={styles.image} source={require('../../../img/Union.png')} />
-      <TextInput style={styles.input} placeholder="Add a prayer..." />
+      <TouchableOpacity
+        onPress={() => {
+          this.setState({ text: '' });
+          this.props.addTask(this.state.text);
+        }}
+      >
+        <Image style={styles.image} source={require('../../../img/Union.png')} />
+      </TouchableOpacity>
+      <TextInput
+        style={styles.input}
+        onChangeText={text => this.setState({ text })}
+        value={this.state.text}
+        placeholder="Add a prayer..."
+      />
     </View>
   );
 }

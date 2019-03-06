@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
+import { setIdType } from '../../../actions';
 
 class ButtonMain extends Component {
   render = () => (
-    <View style={styles.button} onTouchStart={() => this.props.navigation.navigate('ToDo')}>
+    <View
+      style={styles.button}
+      onTouchStart={() => {
+        this.props.editIdType(this.props.id);
+        this.props.navigation.navigate('ToDo', { idType: this.props.id });
+      }}
+    >
       <Text style={styles.text}>{this.props.text}</Text>
     </View>
   );

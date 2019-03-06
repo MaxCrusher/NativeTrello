@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 class NavItem extends Component {
-  render = () => {
-    console.log(this.props);
-    return (
-      <View style={this.props.active ? styles.containerActive : styles.container}>
-        <Text style={this.props.active ? styles.textActive : styles.text}>{this.props.text}</Text>
-        <View style={styles.circle}>
-          <Text style={styles.circleText}>3</Text>
-        </View>
+  render = () => (
+    <View style={this.props.active ? styles.containerActive : styles.container}>
+      <Text style={this.props.active ? styles.textActive : styles.text}>{this.props.text}</Text>
+      <View style={styles.circle}>
+        <Text style={styles.circleText}>3</Text>
       </View>
-    );
-  };
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

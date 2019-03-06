@@ -1,32 +1,66 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import Swipeout from 'react-native-swipeout';
 import CheckBox from './CheckBox';
+import IconState from '../../../common/IconState';
 import InformationTask from './InformationTask';
 
 class ItemTask extends Component {
   state = {
-    isChecked: this.props.checked,
+    isChecked: this.props.closed,
   };
 
-  render = () => (
-    <View style={styles.container}>
-      <View style={styles.iconState} />
-      <View onTouchStart={() => this.setState({ isChecked: !this.state.isChecked })}>
-        <CheckBox checked={this.state.isChecked} />
-      </View>
-      <Text style={styles.text}>{this.props.text}</Text>
+  editCheckTask = () => {
+    this.setState({ isChecked: !this.state.isChecked }, () =>
+      this.props.editCheckTask(this.props.id, this.state.isChecked),
+    );
+  };
 
-      <InformationTask name="user" num={this.props.users} />
-      <InformationTask name="subscribers" num={this.props.subscribers} />
-    </View>
-  );
+  render = () => {
+    const swipeoutBtns = [
+      {
+        text: 'Delete',
+        backgroundColor: '#AC5253',
+        color: '#ffffff',
+        onPress: () => {
+          this.props.deleteTask(this.props.id);
+        },
+      },
+    ];
+    return (
+      <Swipeout right={swipeoutBtns} backgroundColor="#ffffff" type="delete" buttonWidth={80}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('PrayerDetail', { id: this.props.id })}>
+          <View style={styles.container}>
+            <IconState />
+            <View onTouchStart={this.editCheckTask}>
+              <CheckBox checked={this.state.isChecked} />
+            </View>
+            <Text style={this.state.isChecked ? styles.textLine : styles.text}>
+              {this.props.text.length < 15 ? this.props.text : this.props.text.slice(0, 15).concat('...')}
+            </Text>
+
+            <InformationTask name="user" num={this.props.users} />
+            <InformationTask name="subscribers" num={this.props.subscribers} />
+          </View>
+        </TouchableOpacity>
+      </Swipeout>
+    );
+  };
 }
 
 const styles = StyleSheet.create({
   text: {
     fontSize: 17,
     color: '#514D47',
-    marginRight: 30,
+    marginRight: 15,
+    width: '47%',
+  },
+  textLine: {
+    fontSize: 17,
+    color: '#514D47',
+    marginRight: 15,
+    width: '47%',
+    textDecorationLine: 'line-through',
   },
   container: {
     flex: 1,
@@ -34,6 +68,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
+    paddingLeft: 15,
+    paddingRight: 15,
     paddingTop: 23,
     paddingBottom: 23,
     borderBottomWidth: 1,
