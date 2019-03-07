@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import Comment from './Comment';
 import AddComment from './AddComment';
 
@@ -33,3 +34,7 @@ const styles = StyleSheet.create({
 });
 
 export default Comments;
+Comments.propTypes = {
+  comments: PropTypes.array.isRequired,
+  addComment: PropTypes.func.isRequired,
+};

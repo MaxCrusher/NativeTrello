@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
+import PropTypes from 'prop-types';
 
 class Comment extends Component {
   render = () => {
@@ -49,3 +50,7 @@ const styles = StyleSheet.create({
 });
 
 export default Comment;
+Comment.propTypes = {
+  name: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};

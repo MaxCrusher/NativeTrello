@@ -77,4 +77,6 @@ Main.propTypes = {
   types: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
   fetchGetTypes: PropTypes.func.isRequired,
+  setIdType: PropTypes.func.isRequired,
+  navigation: PropTypes.object.isRequired,
 };

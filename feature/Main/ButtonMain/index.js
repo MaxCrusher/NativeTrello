@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
-import { setIdType } from '../../../actions';
+import PropTypes from 'prop-types';
 
 class ButtonMain extends Component {
   render = () => (
@@ -33,3 +33,10 @@ const styles = StyleSheet.create({
   },
 });
 export default ButtonMain;
+
+ButtonMain.propTypes = {
+  editIdType: PropTypes.func.isRequired,
+  navigation: PropTypes.object.isRequired,
+  text: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+};

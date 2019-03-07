@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
+import PropTypes from 'prop-types';
 
 class CheckBox extends Component {
   render = () => {
@@ -24,3 +25,6 @@ const styles = StyleSheet.create({
 });
 
 export default CheckBox;
+CheckBox.propTypes = {
+  checked: PropTypes.bool.isRequired,
+};

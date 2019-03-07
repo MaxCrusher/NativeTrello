@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput, Text, View, StyleSheet, Image, ActivityIndicator, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { toUnicode } from 'punycode';
 import IconState from '../../common/IconState';
 import PrayerInfo from './PrayerInfo';
 import Members from './Members';
@@ -108,3 +108,13 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(PrayerDetail);
+PrayerDetail.propTypes = {
+  task: PropTypes.object.isRequired,
+  editTextTask: PropTypes.func.isRequired,
+  navigation: PropTypes.object.isRequired,
+  comments: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  addComment: PropTypes.func.isRequired,
+  getComment: PropTypes.func.isRequired,
+  actualUser: PropTypes.object.isRequired,
+};

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 import Swipeout from 'react-native-swipeout';
 import CheckBox from './CheckBox';
 import IconState from '../../../common/IconState';
@@ -39,8 +40,8 @@ class ItemTask extends Component {
               {this.props.text.length < 15 ? this.props.text : this.props.text.slice(0, 15).concat('...')}
             </Text>
 
-            <InformationTask name="user" num={this.props.users} />
-            <InformationTask name="subscribers" num={this.props.subscribers} />
+            <InformationTask name="user" num={3} />
+            <InformationTask name="subscribers" num={100} />
           </View>
         </TouchableOpacity>
       </Swipeout>
@@ -84,3 +85,11 @@ const styles = StyleSheet.create({
 });
 
 export default ItemTask;
+ItemTask.propTypes = {
+  id: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired,
+  navigation: PropTypes.object.isRequired,
+  closed: PropTypes.bool.isRequired,
+  deleteTask: PropTypes.func.isRequired,
+  editCheckTask: PropTypes.func.isRequired,
+};

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TextInput, Image, View, StyleSheet, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
 class AddComment extends Component {
   state = {
@@ -40,3 +41,6 @@ const styles = StyleSheet.create({
 });
 
 export default AddComment;
+AddComment.propTypes = {
+  addComment: PropTypes.func.isRequired,
+};

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 let text = null;
 
@@ -41,3 +42,8 @@ const styles = StyleSheet.create({
   },
 });
 export default InfoItem;
+InfoItem.propTypes = {
+  type: PropTypes.bool.isRequired,
+  num: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired,
+};

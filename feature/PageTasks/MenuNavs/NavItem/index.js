@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 class NavItem extends Component {
   render = () => (
@@ -51,3 +52,7 @@ const styles = StyleSheet.create({
 });
 
 export default NavItem;
+NavItem.propTypes = {
+  active: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired,
+};

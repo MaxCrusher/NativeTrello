@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
 class AddPrayer extends Component {
   state = {
@@ -54,3 +55,6 @@ const styles = StyleSheet.create({
 });
 
 export default AddPrayer;
+AddPrayer.propTypes = {
+  addTask: PropTypes.func.isRequired,
+};

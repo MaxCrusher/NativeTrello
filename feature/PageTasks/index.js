@@ -35,7 +35,8 @@ class PageTasks extends Component {
 
   editTaskCheck = (id, check) => {
     console.log(id, check);
-    this.props.editCheckTask(id, check)
+    this.props
+      .editCheckTask(id, check)
       .then(response => this.setState({ show: this.state.show }))
       .catch(error => console.log(error));
   };
@@ -66,7 +67,13 @@ class PageTasks extends Component {
           keyExtractor={this._keyExtractor}
           data={this.props.tasksNotClose}
           renderItem={({ item }) => (
-            <ItemTask {...item} key={item} navigation={this.props.navigation} editCheckTask={this.editTaskCheck} deleteTask={this.deleteTask} />
+            <ItemTask
+              {...item}
+              key={item}
+              navigation={this.props.navigation}
+              editCheckTask={this.editTaskCheck}
+              deleteTask={this.deleteTask}
+            />
           )}
         />
         <Button showClose={this.showClose} />
@@ -79,7 +86,13 @@ class PageTasks extends Component {
             keyExtractor={this._keyExtractor}
             data={this.props.tasksClose}
             renderItem={({ item }) => (
-              <ItemTask {...item} key={item} navigation={this.props.navigation} editCheckTask={this.editTaskCheck} deleteTask={this.deleteTask} />
+              <ItemTask
+                {...item}
+                key={item}
+                navigation={this.props.navigation}
+                editCheckTask={this.editTaskCheck}
+                deleteTask={this.deleteTask}
+              />
             )}
           />
         ) : null}
@@ -111,5 +124,12 @@ export default connect(
 PageTasks.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   fetchGetTasks: PropTypes.func.isRequired,
-  tasks: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired,
+  tasksClose: PropTypes.array.isRequired,
+  tasksNotClose: PropTypes.array.isRequired,
+  actualTypeId: PropTypes.number.isRequired,
+  fetchAddTasks: PropTypes.func.isRequired,
+  editCheckTask: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
+  actualUser: PropTypes.object.isRequired,
 };

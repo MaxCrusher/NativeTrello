@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 export class InformaitonTask extends Component {
   render = () => (
@@ -35,3 +36,7 @@ const styles = StyleSheet.create({
 });
 
 export default InformaitonTask;
+InformaitonTask.propTypes = {
+  name: PropTypes.string.isRequired,
+  num: PropTypes.number.isRequired,
+};

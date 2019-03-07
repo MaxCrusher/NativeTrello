@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 export class Button extends Component {
   state = {
@@ -40,3 +41,6 @@ const styles = StyleSheet.create({
 });
 
 export default Button;
+Button.propTypes = {
+  showClose: PropTypes.func.isRequired,
+};

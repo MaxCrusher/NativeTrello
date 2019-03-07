@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
 class HeaderMain extends Component {
   render = () => {
@@ -39,3 +40,7 @@ const styles = StyleSheet.create({
   },
 });
 export default HeaderMain;
+HeaderMain.propTypes = {
+  text: PropTypes.string.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
